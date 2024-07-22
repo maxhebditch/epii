@@ -1,0 +1,173 @@
+[tool.poetry]
+name = "epii"
+version = "0.1.0"
+description = "Note application"
+authors = ["Max Hebditch <max@maxhebditch.co.uk>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.scripts]
+start = "epii:main"
+
+[tool.pytest.ini_options]
+addopts = "--cov=epii --cov-report=xml --cov-report=term --cov-fail-under=90"
+
+[tool.coverage.run]
+omit = ["*/__init__.py"]
+
+[tool.mypy]
+plugins = ["pydantic.mypy"]
+follow_imports = "silent"
+python_version = "3.12"
+exclude = [
+    "tests"
+]
+
+strict = true
+disallow_untyped_defs = true
+
+[tool.pydantic-mypy]
+init_forbid_extra = true
+init_typed = true
+warn_required_dynamic_aliases = true
+warn_untyped_fields = true
+
+[tool.ruff]
+line-length = 88
+indent-width = 4
+
+target-version = "py312"
+
+[tool.ruff.lint]
+preview = true  # Enable preview features
+select = [
+    "F",    # Pyflakes: Likely bugs
+    "E",    # PEP8: Style errors
+    "W",    # PEP8: Warnings
+    "C90",  # McCabe complexity
+    "I",    # Import order
+    "N",    # Naming conventions
+    "ANN",  # Type annotations
+    "S",    # Security issues
+    "BLE",  # Black formatting issues
+    "FBT",  # Flake8 built-in rules
+    "COM",  # Docstrings
+    "C4",   # Cyclomatic complexity
+    "DTZ",  # Datetime issues
+    "EM",   # Empty code
+    "ISC",  # Import sorting
+    "ICN",  # Import conventions
+    "LOG",  # Logging practices
+    "G",    # General coding issues
+    "INP",  # Input issues
+    "PIE",  # PyImportErrors
+    "T20",  # Complexity and maintainability
+    "Q",    # Quotes consistency
+    "RET",  # Return statements
+    "B",    # Bug risks
+    "SLF",  # Self-related issues
+    "TID",  # Tidiness
+    "PTH",  # Path issues
+    "TD",   # Todo comments
+    "FIX",  # Fixme comments
+    "ERA",  # Error handling
+    "PD",   # Pandas specific issues
+    "PL",   # Pylint issues
+    "TRY",  # Try/except issues
+    "FLY",  # Flycheck issues
+    "NPY",  # Numpy specific issues
+    "PERF", # Performance issues
+    "FURB", # Future-proofing
+    "RUF",  # Ruff-specific issues
+    "ARG",  # Argument issues
+]
+ignore = [
+    "COM812", # Don't keep the trailing comma
+    "ISC001", # Don't fix implict joins,
+    "PLC0414", # Keep import alias as conflicts with F401,
+]
+
+# Specify fixable and unfixable rules
+fixable = ["ALL"] 
+unfixable = [
+    "T20",  # Complexity/maintainability issues
+    "B",    # Bug risks
+    "RET",  # Return-related issues
+    "PIE",  # PyImportErrors
+    "ARG",  # Argument-related issues
+    "C90",  # Complex logic
+    "ANN",  # Annotations
+    "COM",  # Comments/docstrings
+    "LOG",  # Logging practices
+    "EM",   # Empty/redundant code
+    "PERF", # Performance improvements
+    "FURB",  # Future-proofing
+]
+
+exclude = [
+    ".devcontainer",
+    ".ruff_cache",
+    ".venv",
+    "build",
+    "dist"
+]
+
+# Allow unused variables when underscore-prefixed.
+dummy-variable-rgx = "^(_+|(_+[a-zA-Z0-9_]*[a-zA-Z0-9]+?))$"
+
+[tool.ruff.lint.flake8-quotes]
+docstring-quotes = "double"
+
+[tool.ruff.lint.per-file-ignores]
+"__init__.py" = ["E402"]
+"**/{tests,docs,tools}/*" = [
+    "E402", 
+    "S101", 
+    "ANN001",
+    "ANN201",
+    "INP001",
+    "SLF001", # Allow access to private methods in tests
+]
+
+[tool.ruff.format]
+# Like Black, use double quotes for strings.
+quote-style = "double"
+
+# Like Black, indent with spaces, rather than tabs.
+indent-style = "space"
+
+# Like Black, respect magic trailing commas.
+skip-magic-trailing-comma = false
+
+# Like Black, automatically detect the appropriate line ending.
+line-ending = "auto"
+
+# Enable auto-formatting of code examples in docstrings. Markdown,
+# reStructuredText code/literal blocks and doctests are all supported.
+#
+# This is currently disabled by default, but it is planned for this
+# to be opt-out in the future.
+docstring-code-format = true
+
+# Set the line length limit used when formatting code snippets in
+# docstrings.
+#
+# This only has an effect when the `docstring-code-format` setting is
+# enabled.
+docstring-code-line-length = "dynamic"
+
+[tool.poetry.dependencies]
+python = ">3.12,<3.13"
+pyside6 = "^6.7.2"
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.2.2"
+pytest-qt = "^4.4.0"
+ruff = "^0.5.1"
+mypy = "^1.10.1"
+pydantic = {extras = ["mypy"], version = "^2.8.2"}
+pytest-cov = "^5.0.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

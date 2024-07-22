@@ -1,0 +1,45 @@
+name: epii Checks
+
+on:
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  build:
+    name: epii Checks
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        python-version: ["3.12"]
+    env:
+      DISPLAY: ":99.0"
+      QT_SELECT: "qt6"
+
+    steps:
+    - uses: actions/checkout@v4
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v3
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Setup xvfb (Linux)
+      run: |
+        : # Found here https://github.com/GuckLab/MPL-Data-Cast/blob/5c6c089aa5391e7a788015efd602c237da1fcc94/.github/workflows/check.yml
+        sudo apt-get install -y xvfb libxkbcommon-x11-0 libxcb-icccm4 libxcb-image0 libxcb-keysyms1 libxcb-randr0 libxcb-render-util0 libxcb-xinerama0 libxcb-xinput0 libxcb-xfixes0 libxcb-shape0 libglib2.0-0 libgl1-mesa-dev
+        sudo apt-get install '^libxcb.*-dev' libx11-xcb-dev libglu1-mesa-dev libxrender-dev libxi-dev libxkbcommon-dev libxkbcommon-x11-dev
+        sudo /usr/bin/Xvfb $DISPLAY -screen 0 1280x1024x24 &
+    - name: Install python dependencies
+      run: |
+        make setup
+        make install
+    - name: Ruff Check for linting
+      run: |
+        make lint
+    - name: Pytest Check for tests
+      env:
+        QT_DEBUG_PLUGINS: 1
+      run: |
+        make test
+    - name: Mypy Check on types
+      run: |
+        make type
