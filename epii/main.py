@@ -5,7 +5,7 @@ from PySide6.QtWidgets import QApplication
 
 from epii.controller import Controller
 from epii.model import Model
-from epii.model.note import notes
+from epii.model.read_notes.note import notes
 from epii.view import View
 from epii.view_model import ViewModel
 

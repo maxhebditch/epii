@@ -6,7 +6,7 @@ from PySide6.QtTest import QSignalSpy
 from utils import note_data
 
 from epii.model.model import Model
-from epii.model.note import Note
+from epii.model.read_notes.note import Note
 from epii.view_model.view_model import ViewModel
 
 

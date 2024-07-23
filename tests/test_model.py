@@ -1,7 +1,7 @@
 from utils import note_data
 
 from epii.model.model import Model
-from epii.model.note import Note
+from epii.model.read_notes.note import Note
 
 
 def test_model_get_data():
