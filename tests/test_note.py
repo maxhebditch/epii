@@ -2,7 +2,7 @@ import pytest
 from pydantic import ValidationError
 from utils import note_data
 
-from epii.model.note import Note
+from epii.notes.note import Note
 
 defaults = ["uuid", "date", "content"]
 
