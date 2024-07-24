@@ -8,7 +8,7 @@ from utils import note_data
 
 from epii.controller.controller import Controller
 from epii.model.model import Model
-from epii.model.read_notes.note import Note
+from epii.notes.note import Note
 from epii.view.view import Button, Header, View, min_height, min_width
 from epii.view_model.view_model import ViewModel
 
