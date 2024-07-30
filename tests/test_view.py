@@ -36,6 +36,7 @@ def test_init_ui(view):
     assert isinstance(view.centralWidget().layout(), QVBoxLayout)
     assert isinstance(view.centralWidget().layout().itemAt(0).widget(), Header)
     assert isinstance(view.centralWidget().layout().itemAt(1).widget(), Button)
+    assert isinstance(view.centralWidget().layout().itemAt(2).widget(), Button)
 
 
 def test_header_init_ui():
@@ -49,7 +50,7 @@ def test_header_init_ui():
 def test_button_init_ui():
     controller = Mock(spec=Controller)
     button = Button(controller)
-    assert button.text() == "Increment"
+    assert button.text() == "Left"
 
 
 def test_header_update_text_on_button_press():

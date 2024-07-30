@@ -1,6 +1,8 @@
-from PySide6.QtWidgets import QLabel, QMainWindow, QPushButton, QVBoxLayout, QWidget
+from PySide6.QtWidgets import QLabel, QMainWindow, QVBoxLayout, QWidget
 
 from epii.controller.controller import Controller
+from epii.view.buttons.nav_buttons import LeftNoteButton
+from epii.view.buttons.update_buttons import UpdateButton
 from epii.view_model.view_model import ViewModel
 
 min_width = 250
@@ -21,20 +23,6 @@ class Header(QLabel):
         self.setText(self.viewmodel.get_data())
 
 
-class Button(QPushButton):
-    def __init__(self, controller: Controller) -> None:
-        super().__init__()
-        self.controller = controller
-        self._init_ui()
-
-    def _init_ui(self) -> None:
-        self.setText("Increment")
-        self.clicked.connect(self._update_data)
-
-    def _update_data(self) -> None:
-        self.controller.update_data()
-
-
 class View(QMainWindow):
     def __init__(self, controller: Controller, viewmodel: ViewModel) -> None:
         super().__init__()
@@ -53,7 +41,8 @@ class View(QMainWindow):
     def _init_content(self) -> None:
         layout = QVBoxLayout()
         layout.addWidget(Header(self.viewmodel))
-        layout.addWidget(Button(self.controller))
+        layout.addWidget(UpdateButton(self.controller))
+        layout.addWidget(LeftNoteButton(self.controller))
         widget = QWidget()
         widget.setLayout(layout)
         self.setCentralWidget(widget)
