@@ -9,7 +9,6 @@ class Model:
         self.idx = 0
 
     def change_idx(self, direction: int) -> None:
-        print(f'idx: {self.idx}, direction: {direction}, len(self.data): {len(self.data)}')
         if self.idx + direction < 0 or self.idx + direction >= len(self.data):
             return
         self.idx += direction
