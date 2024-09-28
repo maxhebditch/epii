@@ -11,7 +11,8 @@ class ViewModel(QObject):
         self._model = model
 
     def get_data(self) -> str:
-        return self._model.get_data()
+        note = self._model.get_current_note()
+        return f"{note.content} {note.count}"
 
     def update_data(self) -> None:
         self._model.update_data(self._model.data)

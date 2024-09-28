@@ -29,7 +29,7 @@ def test_get_data_calls_model_get():
     mock_model.data = Note(**note_data)
     view_mocked_model = ViewModel(mock_model)
     view_mocked_model.get_data()
-    view_mocked_model._model.get_data.assert_called_once()
+    view_mocked_model._model.get_current_note.assert_called_once()
 
 
 def test_update_data_no_return_only_emits(view_model):
