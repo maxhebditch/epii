@@ -14,6 +14,11 @@ addopts = "--cov=epii --cov-report=xml --cov-report=term --cov-fail-under=90"
 
 [tool.coverage.run]
 omit = ["*/__init__.py"]
+exclude_lines = [
+    "@abstractmethod",
+    "@abc.abstractmethod",
+    "pass"
+]
 
 [tool.mypy]
 plugins = ["pydantic.mypy"]

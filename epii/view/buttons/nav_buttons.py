@@ -1,5 +1,6 @@
 from epii.controller.controller import Controller, Direction
 from epii.view.buttons.base_buttons import BaseButton
+from abc import abstractmethod
 
 
 class ChangeNoteButton(BaseButton):
@@ -7,8 +8,9 @@ class ChangeNoteButton(BaseButton):
         super().__init__(controller)
         self.clicked.connect(self._change_note)
 
-    def change_note(self, direction: Direction) -> None:
-        self.controller.change_note(direction)
+    @abstractmethod
+    def _change_note(self) -> None: #pragma: no cover
+        pass
 
 
 class LeftNoteButton(ChangeNoteButton):
@@ -20,7 +22,7 @@ class LeftNoteButton(ChangeNoteButton):
         self.setText("Left")
 
     def _change_note(self) -> None:
-        self.change_note(Direction.LEFT)
+        self.controller.change_note(Direction.LEFT)
 
 
 class RightNoteButton(ChangeNoteButton):
@@ -32,4 +34,4 @@ class RightNoteButton(ChangeNoteButton):
         self.setText("Right")
 
     def _change_note(self) -> None:
-        self.change_note(Direction.RIGHT)
+        self.controller.change_note(Direction.RIGHT)
