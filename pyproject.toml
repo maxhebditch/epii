@@ -126,6 +126,7 @@ docstring-quotes = "double"
     "ANN001",
     "ANN201",
     "INP001",
+    "PLR2004", # Magic values
     "SLF001", # Allow access to private methods in tests
 ]
 
