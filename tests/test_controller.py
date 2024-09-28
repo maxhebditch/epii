@@ -9,6 +9,7 @@ def test_update_data():
     controller.update_data()
     controller.viewmodel.update_data.assert_called_once()
 
+
 def test_change_idx():
     controller = Controller(Mock(spec=ViewModel))
     controller.change_note(Direction.RIGHT)

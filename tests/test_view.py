@@ -113,6 +113,7 @@ def test_header_update_text_on_button_press():
 
         assert header.text() == new_data
 
+
 def test_header_switch_note_on_button_press():
     viewmodel = ViewModel(Model([Note(**note_1_data), Note(**note_2_data)]))
     controller = Controller(viewmodel)
