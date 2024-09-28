@@ -1,7 +1,7 @@
 from PySide6.QtWidgets import QLabel, QMainWindow, QVBoxLayout, QWidget
 
 from epii.controller.controller import Controller
-from epii.view.buttons.nav_buttons import LeftNoteButton
+from epii.view.buttons.nav_buttons import LeftNoteButton, RightNoteButton
 from epii.view.buttons.update_buttons import UpdateButton
 from epii.view_model.view_model import ViewModel
 
@@ -43,6 +43,7 @@ class View(QMainWindow):
         layout.addWidget(Header(self.viewmodel))
         layout.addWidget(UpdateButton(self.controller))
         layout.addWidget(LeftNoteButton(self.controller))
+        layout.addWidget(RightNoteButton(self.controller))
         widget = QWidget()
         widget.setLayout(layout)
         self.setCentralWidget(widget)

@@ -21,3 +21,14 @@ class LeftNoteButton(ChangeNoteButton):
 
     def _change_note(self) -> None:
         self.change_note(Direction.LEFT)
+
+class RightNoteButton(ChangeNoteButton):
+    def __init__(self, controller: Controller) -> None:
+        super().__init__(controller)
+        self._init_ui()
+
+    def _init_ui(self) -> None:
+        self.setText("Right")
+
+    def _change_note(self) -> None:
+        self.change_note(Direction.RIGHT)
