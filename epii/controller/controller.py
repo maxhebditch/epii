@@ -16,4 +16,5 @@ class Controller:
         self.viewmodel.update_data()
 
     def change_note(self, direction: Direction) -> None:
-        print(f"change_note {direction}")
+        self.viewmodel.change_idx(direction.value)
+        self.update_data()
