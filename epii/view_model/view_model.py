@@ -17,3 +17,7 @@ class ViewModel(QObject):
     def update_data(self) -> None:
         self._model.update_data(self._model.data)
         self.data_changed.emit()
+
+    def change_idx(self, direction: int) -> None:
+        self._model.change_idx(direction)
+        self.update_data()

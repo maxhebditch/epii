@@ -49,6 +49,13 @@ def test_update_data_calls_model_update():
     view_mocked_model.update_data()
     view_mocked_model._model.update_data.assert_called_once()
 
+def test_change_idx():
+    mock_model = Mock(spec=Model)
+    mock_model.data = Note(**note_data)
+    view_mocked_model = ViewModel(mock_model)
+    view_mocked_model.change_idx(-1)
+    view_mocked_model._model.change_idx.assert_called_once_with(-1)
+    view_mocked_model._model.update_data.assert_called_once()
 
 update_lock = Lock()
 
