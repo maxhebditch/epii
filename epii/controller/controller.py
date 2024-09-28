@@ -1,4 +1,11 @@
+from enum import Enum
+
 from epii.view_model.view_model import ViewModel
+
+
+class Direction(Enum):
+    LEFT = -1
+    RIGHT = 1
 
 
 class Controller:
@@ -7,3 +14,10 @@ class Controller:
 
     def update_data(self) -> None:
         self.viewmodel.update_data()
+
+    def update_view(self) -> None:
+        self.viewmodel.update_view()
+
+    def change_note(self, direction: Direction) -> None:
+        self.viewmodel.change_idx(direction.value)
+        self.update_view()
