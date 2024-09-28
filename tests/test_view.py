@@ -9,13 +9,13 @@ from utils import note_data
 from epii.controller.controller import Controller
 from epii.model.model import Model
 from epii.notes.note import Note
-from epii.view.view import Header, View, min_height, min_width
 from epii.view.buttons.nav_buttons import LeftNoteButton, RightNoteButton
 from epii.view.buttons.update_buttons import UpdateButton
+from epii.view.view import Header, View, min_height, min_width
 from epii.view_model.view_model import ViewModel
 
 
-@pytest.fixture
+@pytest.fixture(autouse=True)
 def view():
     if not QApplication.instance():
         app = QApplication()
@@ -43,7 +43,7 @@ def test_init_ui(view):
     assert view.centralWidget().layout().count() == 4
 
 
-def test_header_init_ui(view):
+def test_header_init_ui():
     viewmodel = Mock(spec=ViewModel)
     view_data_return = "Note Content 0"
     viewmodel.get_data.return_value = view_data_return
@@ -51,25 +51,25 @@ def test_header_init_ui(view):
     assert header.text() == view_data_return
 
 
-def test_increment_note_button_init_ui(view):
+def test_increment_note_button_init_ui():
     controller = Mock(spec=Controller)
     button = UpdateButton(controller)
     assert button.text() == "Increment"
 
 
-def test_left_note_button_init_ui(view):
+def test_left_note_button_init_ui():
     controller = Mock(spec=Controller)
     button = LeftNoteButton(controller)
     assert button.text() == "Left"
 
 
-def test_right_note_button_init_ui(view):
+def test_right_note_button_init_ui():
     controller = Mock(spec=Controller)
     button = RightNoteButton(controller)
     assert button.text() == "Right"
 
 
-def test_header_update_text_on_emit(view):
+def test_header_update_text_on_emit():
     viewmodel = ViewModel(Model([Note(**note_data)]))
     controller = Controller(viewmodel)
 
@@ -89,7 +89,7 @@ def test_header_update_text_on_emit(view):
         assert header.text() == new_data
 
 
-def test_header_update_text_on_button_press(view):
+def test_header_update_text_on_button_press():
     viewmodel = ViewModel(Model([Note(**note_data)]))
     controller = Controller(viewmodel)
 
