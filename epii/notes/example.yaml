@@ -3,3 +3,7 @@
   url: https://example.com
   content: |
     The actual content of the note. It comes from the file `example.yaml`.
+2c80012c-419d-47a9-b2f4-918fa326cdca:
+  date: 2024-01-01T00:00:00.000Z
+  content: |
+    A note without a URL.
