@@ -6,11 +6,19 @@ from epii.notes.note import Note
 class Model:
     def __init__(self, notes: List[Note]) -> None:
         self.data = notes
+        self.idx = 0
+
+    def change_idx(self, direction: int) -> None:
+        if self.idx + direction < 0 or self.idx + direction >= len(self.data):
+            return
+        self.idx += direction
 
     def get_data(self) -> str:
-        note = self.data[0]
-        return f"{note.content} {note.count}"
+        return self.data
 
+    def get_current_note(self) -> str:
+        return self.data[self.idx]
+    
     def update_data(self, notes: List[Note]) -> None:
         note = notes[0]
         updated_note = note.model_copy(

@@ -3,12 +3,50 @@ from utils import note_data
 from epii.model.model import Model
 from epii.notes.note import Note
 
+def test_model_initialisation():
+    note = Note(**note_data)
+    model = Model([note])
+
+    assert model.data == [note]
+    assert model.idx == 0
+
 
 def test_model_get_data():
     note = Note(**note_data)
     model = Model([note])
 
-    assert model.get_data() == f"{note.content} {note.count}"
+    assert model.get_data() == [note]
+
+def test_model_current_note():
+    note = Note(**note_data)
+    model = Model([note])
+
+    assert model.get_current_note() == note
+
+def test_model_change_idx():
+    note = Note(**note_data)
+    model = Model([note, note])
+
+    model.change_idx(1)
+    assert model.idx == 1
+
+    model.change_idx(-1)
+    assert model.idx == 0
+
+def test_model_change_idx_limited_to_note_num():
+    note = Note(**note_data)
+    model = Model([note])
+
+    model.change_idx(1)
+    assert model.idx == 0
+
+def test_model_change_idx_limited_to_positive():
+    note = Note(**note_data)
+    model = Model([note])
+
+    model.change_idx(-1)
+    assert model.idx == 0
+    
 
 
 def test_model_update_data():
