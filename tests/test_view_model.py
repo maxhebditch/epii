@@ -55,7 +55,6 @@ def test_change_idx():
     view_mocked_model = ViewModel(mock_model)
     view_mocked_model.change_idx(-1)
     view_mocked_model._model.change_idx.assert_called_once_with(-1)
-    view_mocked_model._model.update_data.assert_called_once()
 
 update_lock = Lock()
 

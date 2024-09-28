@@ -20,4 +20,3 @@ class ViewModel(QObject):
 
     def change_idx(self, direction: int) -> None:
         self._model.change_idx(direction)
-        self.update_data()

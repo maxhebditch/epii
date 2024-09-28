@@ -9,6 +9,7 @@ class Model:
         self.idx = 0
 
     def change_idx(self, direction: int) -> None:
+        print(f'idx: {self.idx}, direction: {direction}, len(self.data): {len(self.data)}')
         if self.idx + direction < 0 or self.idx + direction >= len(self.data):
             return
         self.idx += direction
@@ -20,8 +21,8 @@ class Model:
         return self.data[self.idx]
     
     def update_data(self, notes: List[Note]) -> None:
-        note = notes[0]
+        note = notes[self.idx]
         updated_note = note.model_copy(
             update={"count": note.count + 1, "content": f"{note.content}"}
         )
-        self.data = [updated_note]
+        self.data = [updated_note if i == self.idx else note for i, note in enumerate(notes)]
