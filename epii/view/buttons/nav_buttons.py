@@ -1,6 +1,7 @@
+from abc import abstractmethod
+
 from epii.controller.controller import Controller, Direction
 from epii.view.buttons.base_buttons import BaseButton
-from abc import abstractmethod
 
 
 class ChangeNoteButton(BaseButton):
@@ -9,7 +10,7 @@ class ChangeNoteButton(BaseButton):
         self.clicked.connect(self._change_note)
 
     @abstractmethod
-    def _change_note(self) -> None: #pragma: no cover
+    def _change_note(self) -> None:  # pragma: no cover
         pass
 
 
