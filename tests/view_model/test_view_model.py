@@ -3,11 +3,11 @@ from unittest.mock import Mock
 
 import pytest
 from PySide6.QtTest import QSignalSpy
-from utils import note_1_data
 
 from epii.model.model import Model
 from epii.notes.note import Note
 from epii.view_model.view_model import ViewModel
+from tests.utils import note_1_data
 
 
 @pytest.fixture

@@ -1,7 +1,6 @@
-from utils import note_1_data
-
 from epii.model.model import Model
 from epii.notes.note import Note
+from tests.utils import note_1_data
 
 
 def test_model_initialisation():

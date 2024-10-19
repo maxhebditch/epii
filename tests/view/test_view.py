@@ -4,7 +4,6 @@ import pytest
 from PySide6.QtCore import Qt
 from PySide6.QtTest import QSignalSpy, QTest
 from PySide6.QtWidgets import QApplication, QVBoxLayout, QWidget
-from utils import note_1_data, note_2_data
 
 from epii.controller.controller import Controller
 from epii.model.model import Model
@@ -13,6 +12,7 @@ from epii.view.buttons.nav_buttons import LeftNoteButton, RightNoteButton
 from epii.view.buttons.update_buttons import UpdateButton
 from epii.view.view import Header, View, min_height, min_width
 from epii.view_model.view_model import ViewModel
+from tests.utils import note_1_data, note_2_data
 
 
 @pytest.fixture(autouse=True)
