@@ -1,9 +1,100 @@
-57ded2b6-8c21-45ba-b194-4334cb81b16b:
-  date: 2023-06-15T08:51:25.103Z
-  url: https://example.com
+21fd4d86-fb60-413c-afa1-8ba6e66127d5: 
+  date: 2024-01-01T03:45:12.000Z
+  url: https://www.brainyquote.com
   content: |
-    The actual content of the note. It comes from the file `example.yaml`.
-2c80012c-419d-47a9-b2f4-918fa326cdca:
-  date: 2024-01-01T00:00:00.000Z
+    "The only way to do great work is to love what you do." - Steve Jobs
+9a9f20ad-583d-4da1-90cf-18c5aa692167: 
+  date: 2024-01-15T14:22:37.000Z
+  url: https://www.lifehack.org
   content: |
-    A note without a URL.
+    Develop a morning routine that includes meditation, exercise, and reading to boost productivity.
+633547f1-8bab-45f8-a666-c967964ff3b1: 
+  date: 2024-02-01T08:56:49.000Z
+  url: https://www.goodreads.com
+  content: |
+    "Atomic Habits" by James Clear - Focuses on the power of small habits and how they can lead to significant personal change.
+1d68637d-77cb-4a61-9ba3-48bf9385c46b: 
+  date: 2024-02-15T19:30:05.000Z
+  url: https://www.allrecipes.com
+  content: |
+    Classic Pancakes - Ingredients: 1 cup flour, 1 egg, 1 cup milk, 1 tbsp sugar, 1 tsp baking powder. Mix and cook on a hot griddle.
+11fa2102-8ce8-4937-80ce-43dcdcfc566b: 
+  date: 2024-03-01T11:15:27.000Z
+  url: https://www.lonelyplanet.com
+  content: |
+    Always carry a photocopy of your passport when traveling internationally.
+e8293d26-ad0c-4295-bb67-ad1da6f4c7ad: 
+  date: 2024-03-15T23:01:13.000Z
+  url: https://www.history.com
+  content: |
+    The Great Wall of China is over 13,000 miles long and was built over several centuries.
+dc1d1aad-e268-43aa-a260-346a6ee75b75: 
+  date: 2024-04-01T05:44:58.000Z
+  url: https://www.merriam-webster.com
+  content: |
+    Serendipity - The occurrence of events by chance in a happy or beneficial way.
+256d4eae-ad5d-4795-b0bb-3c791e8964f3: 
+  date: 2024-04-15T16:20:34.000Z
+  url: https://www.success.com
+  content: |
+    Consistency is more important than intensity when it comes to long-term success.
+b445e387-6527-4380-9a39-22574fcd840a: 
+  date: 2024-05-01T09:37:21.000Z
+  url: https://www.healthline.com
+  content: |
+    Drink at least 8 cups of water daily to stay hydrated.
+d1524df6-4a8d-48a3-94c1-d8daf8d0bc0d: 
+  date: 2024-05-15T21:55:47.000Z
+  url: https://www.psychologytoday.com
+  content: |
+    Journaling has helped me clarify my thoughts and reduce stress.
+20e2ee01-d0e3-49fe-888d-20e61b8d8164: 
+  date: 2024-06-01T02:18:09.000Z
+  url: https://www.quantamagazine.org
+  content: |
+    Quantum computing could potentially revolutionize industries by solving complex problems faster than classical computers.
+931b7d39-f228-4975-a3f3-8ffc0b5f6862: 
+  date: 2024-06-15T13:42:56.000Z
+  url: https://www.moma.org
+  content: |
+    Vincent van Gogh's use of color and emotion in "Starry Night" demonstrates the power of expressive art.
+a3a0be69-573d-47dc-9ecd-5a4aa8a9d3d8: 
+  date: 2024-07-01T07:29:33.000Z
+  url: https://www.classicfm.com
+  content: |
+    "Clair de Lune" by Claude Debussy - A beautiful and calming piano piece.
+b0a180f4-f102-414c-8bd1-fe0eef652bdc: 
+  date: 2024-07-15T18:11:45.000Z
+  url: https://www.forbes.com
+  content: |
+    Focus on customer feedback to continuously improve product offerings.
+44c15393-7e30-4331-bc69-a0fe3ef87bbc: 
+  date: 2024-08-01T10:53:02.000Z
+  url: https://www.mindful.org
+  content: |
+    Spend 5 minutes each day focusing on your breath to increase mindfulness.
+47f1b141-adf3-4e4a-9c72-785913e242e9: 
+  date: 2024-08-15T22:07:19.000Z
+  url: https://www.epa.gov
+  content: |
+    Recycling one ton of paper can save 17 trees and 7,000 gallons of water.
+797a17fc-60e9-43f0-84cc-dd1c4352160e: 
+  date: 2024-09-01T04:39:51.000Z
+  url: https://www.britannica.com
+  content: |
+    "Success is not final, failure is not fatal: It is the courage to continue that counts." - Winston Churchill
+508dd157-0921-4c39-b197-63676ccf2f6a: 
+  date: 2024-09-15T15:26:14.000Z
+  url: https://www.winstonchurchill.org
+  content: |
+    Photosynthesis - The process by which green plants use sunlight to synthesize foods from carbon dioxide and water.
+93ad9387-8954-414f-b4e3-ca7d520554bc: 
+  date: 2024-10-01T12:48:30.000Z
+  url: https://www.duolingo.com
+  content: |
+    Practice speaking with native speakers to improve fluency.
+bc7e4e5a-ccd2-4a00-86ee-e655d91dba76: 
+  date: 2024-10-15T20:05:43.000Z
+  url: https://www.nerdwallet.com
+  content: |
+    Start an emergency fund with at least three to six months' worth of living expenses.
