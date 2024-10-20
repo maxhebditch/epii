@@ -1,8 +1,8 @@
 from abc import abstractmethod
 
+from epii.controller.controller import Direction
 from epii.view.buttons.base_buttons import BaseButton
 from epii.view_model.view_model import ViewModel
-from epii.controller.controller import Direction
 
 
 class ChangeNoteButton(BaseButton):

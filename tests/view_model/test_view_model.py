@@ -4,10 +4,10 @@ from unittest.mock import Mock
 import pytest
 from PySide6.QtTest import QSignalSpy
 
+from epii.controller.controller import Direction
 from epii.model.model import Model
 from epii.notes.note import Note
 from epii.view_model.view_model import ViewModel
-from epii.controller.controller import Direction
 from tests.utils import note_1_data
 
 

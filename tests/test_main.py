@@ -69,7 +69,6 @@ def test_viewmodel_initialization():
         mock_view_model.assert_called_once_with(model_instance)
 
 
-
 def test_view_initialization():
     with (
         patch("epii.main.sys"),
