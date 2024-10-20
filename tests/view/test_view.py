@@ -6,7 +6,7 @@ from PySide6.QtTest import QSignalSpy, QTest
 from PySide6.QtWidgets import QApplication, QVBoxLayout, QWidget
 
 from epii.model.model import Model
-from epii.notes.note import Note
+from epii.model.notes.note import Note
 from epii.view.buttons.nav_buttons import LeftNoteButton, RightNoteButton
 from epii.view.buttons.update_buttons import UpdateButton
 from epii.view.view import Header, View, min_height, min_width

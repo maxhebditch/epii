@@ -4,7 +4,7 @@ from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import QApplication
 
 from epii.model import Model
-from epii.notes.note import notes
+from epii.model.notes.note import notes
 from epii.view import View
 from epii.view_model import ViewModel
 
