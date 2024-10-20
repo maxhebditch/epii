@@ -57,7 +57,6 @@ def test_viewmodel_initialization():
         patch("epii.main.sys"),
         patch("epii.main.ViewModel") as mock_view_model,
         patch("epii.main.Model", new_callable=MagicMock) as mock_model,
-        patch("epii.main.Controller", new_callable=MagicMock),
         patch("epii.main.View", new_callable=MagicMock),
     ):
         model_instance = mock_model.return_value
@@ -70,33 +69,13 @@ def test_viewmodel_initialization():
         mock_view_model.assert_called_once_with(model_instance)
 
 
-def test_controller_initialization():
-    with (
-        patch("epii.main.sys"),
-        patch("epii.main.Controller") as mock_controller,
-        patch("epii.main.ViewModel", new_callable=MagicMock) as mock_view_model,
-        patch("epii.main.Model", new_callable=MagicMock),
-        patch("epii.main.View", new_callable=MagicMock),
-    ):
-        viewmodel_instance = mock_view_model.return_value
-
-        app = generate_app()
-        QTimer.singleShot(100, app.quit)
-
-        main_module()
-
-        mock_controller.assert_called_once_with(viewmodel_instance)
-
-
 def test_view_initialization():
     with (
         patch("epii.main.sys"),
         patch("epii.main.View") as mock_view,
-        patch("epii.main.Controller", new_callable=MagicMock) as mock_controller,
         patch("epii.main.ViewModel", new_callable=MagicMock) as mock_view_model,
         patch("epii.main.Model", new_callable=MagicMock),
     ):
-        controller_instance = mock_controller.return_value
         viewmodel_instance = mock_view_model.return_value
 
         app = generate_app()
@@ -104,7 +83,7 @@ def test_view_initialization():
 
         main_module()
 
-        mock_view.assert_called_once_with(controller_instance, viewmodel_instance)
+        mock_view.assert_called_once_with(viewmodel_instance)
 
 
 def test_qapplication_singleton_behavior():

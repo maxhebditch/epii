@@ -5,9 +5,8 @@ from PySide6.QtCore import Qt
 from PySide6.QtTest import QSignalSpy, QTest
 from PySide6.QtWidgets import QApplication, QVBoxLayout, QWidget
 
-from epii.controller.controller import Controller
 from epii.model.model import Model
-from epii.notes.note import Note
+from epii.model.notes.note import Note
 from epii.view.buttons.nav_buttons import LeftNoteButton, RightNoteButton
 from epii.view.buttons.update_buttons import UpdateButton
 from epii.view.view import Header, View, min_height, min_width
@@ -21,10 +20,9 @@ def view():
         app = QApplication()
     else:
         app = QApplication.instance()
-    controller = Controller(Mock(spec=ViewModel))
     viewmodel = Mock(spec=ViewModel)
     viewmodel.get_data.return_value = "Note Content 0"
-    view = View(controller, viewmodel)
+    view = View(viewmodel)
     yield view
     app.quit()
     del app
@@ -52,20 +50,20 @@ def test_header_init_ui():
 
 
 def test_increment_note_button_init_ui():
-    controller = Mock(spec=Controller)
-    button = UpdateButton(controller)
+    viewmodel = Mock(spec=ViewModel)
+    button = UpdateButton(viewmodel)
     assert button.text() == "Increment"
 
 
 def test_left_note_button_init_ui():
-    controller = Mock(spec=Controller)
-    button = LeftNoteButton(controller)
+    viewmodel = Mock(spec=ViewModel)
+    button = LeftNoteButton(viewmodel)
     assert button.text() == "Left"
 
 
 def test_right_note_button_init_ui():
-    controller = Mock(spec=Controller)
-    button = RightNoteButton(controller)
+    viewmodel = Mock(spec=ViewModel)
+    button = RightNoteButton(viewmodel)
     assert button.text() == "Right"
 
 
@@ -90,10 +88,9 @@ def test_header_update_text_on_emit():
 
 def test_header_update_text_on_button_press():
     viewmodel = ViewModel(Model([Note(**note_1_data)]))
-    controller = Controller(viewmodel)
 
     header = Header(viewmodel)
-    update_button = UpdateButton(controller)
+    update_button = UpdateButton(viewmodel)
 
     spy = QSignalSpy(viewmodel.data_changed)
 
@@ -116,11 +113,10 @@ def test_header_update_text_on_button_press():
 
 def test_header_switch_note_on_button_press():
     viewmodel = ViewModel(Model([Note(**note_1_data), Note(**note_2_data)]))
-    controller = Controller(viewmodel)
 
     header = Header(viewmodel)
-    left_button = LeftNoteButton(controller)
-    right_button = RightNoteButton(controller)
+    left_button = LeftNoteButton(viewmodel)
+    right_button = RightNoteButton(viewmodel)
 
     spy = QSignalSpy(viewmodel.data_changed)
 
@@ -156,12 +152,11 @@ def test_header_switch_note_on_button_press():
 
 def test_header_update_notes_individually_on_button_press():
     viewmodel = ViewModel(Model([Note(**note_1_data), Note(**note_2_data)]))
-    controller = Controller(viewmodel)
 
     header = Header(viewmodel)
-    left_button = LeftNoteButton(controller)
-    right_button = RightNoteButton(controller)
-    update_button = UpdateButton(controller)
+    left_button = LeftNoteButton(viewmodel)
+    right_button = RightNoteButton(viewmodel)
+    update_button = UpdateButton(viewmodel)
 
     spy = QSignalSpy(viewmodel.data_changed)
 

@@ -1,6 +1,7 @@
 from PySide6.QtCore import QObject, Signal
 
 from epii.model.model import Model
+from epii.view_model.direction import Direction
 
 
 class ViewModel(QObject):
@@ -21,5 +22,5 @@ class ViewModel(QObject):
     def update_view(self) -> None:
         self.data_changed.emit()
 
-    def change_idx(self, direction: int) -> None:
-        self._model.change_idx(direction)
+    def change_idx(self, direction: Direction) -> None:
+        self._model.change_idx(direction.value)

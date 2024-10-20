@@ -1,6 +1,6 @@
 from typing import List
 
-from epii.notes.note import Note
+from epii.model.notes.note import Note
 
 
 class Model:
