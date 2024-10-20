@@ -7,6 +7,7 @@ from PySide6.QtTest import QSignalSpy
 from epii.model.model import Model
 from epii.notes.note import Note
 from epii.view_model.view_model import ViewModel
+from epii.controller.controller import Direction
 from tests.utils import note_1_data
 
 
@@ -50,12 +51,20 @@ def test_update_data_calls_model_update():
     view_mocked_model._model.update_data.assert_called_once()
 
 
-def test_change_idx():
+def test_change_idx_left():
     mock_model = Mock(spec=Model)
     mock_model.data = Note(**note_1_data)
     view_mocked_model = ViewModel(mock_model)
-    view_mocked_model.change_idx(-1)
-    view_mocked_model._model.change_idx.assert_called_once_with(-1)
+    view_mocked_model.change_idx(Direction.LEFT)
+    view_mocked_model._model.change_idx.assert_called_once_with(Direction.LEFT.value)
+
+
+def test_change_idx_right():
+    mock_model = Mock(spec=Model)
+    mock_model.data = Note(**note_1_data)
+    view_mocked_model = ViewModel(mock_model)
+    view_mocked_model.change_idx(Direction.RIGHT)
+    view_mocked_model._model.change_idx.assert_called_once_with(Direction.RIGHT.value)
 
 
 def test_update_view():
