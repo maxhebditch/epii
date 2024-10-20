@@ -3,7 +3,6 @@ import sys
 from PySide6.QtCore import QCoreApplication
 from PySide6.QtWidgets import QApplication
 
-from epii.controller import Controller
 from epii.model import Model
 from epii.notes.note import notes
 from epii.view import View
@@ -26,8 +25,7 @@ def main() -> None:
     app = generate_app()
     model = get_model()
     viewmodel = ViewModel(model)
-    controller = Controller(viewmodel)
-    view = View(controller, viewmodel)
+    view = View(viewmodel)
     view.show()
     sys.exit(app.exec())
 

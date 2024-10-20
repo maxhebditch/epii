@@ -22,4 +22,4 @@ class ViewModel(QObject):
         self.data_changed.emit()
 
     def change_idx(self, direction: int) -> None:
-        self._model.change_idx(direction)
+        self._model.change_idx(direction.value)
