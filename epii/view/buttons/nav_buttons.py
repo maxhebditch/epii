@@ -1,7 +1,7 @@
 from abc import abstractmethod
 
-from epii.view_model.direction import Direction
 from epii.view.buttons.base_buttons import BaseButton
+from epii.view_model.direction import Direction
 from epii.view_model.view_model import ViewModel
 
 
