@@ -22,7 +22,7 @@ def test_model_current_note():
     note = Note(**note_1_data)
     model = Model([note])
 
-    assert model.get_current_note() == note
+    assert model.get_active_item() == note
 
 
 def test_model_change_idx():

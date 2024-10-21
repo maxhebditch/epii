@@ -16,7 +16,7 @@ class Model:
     def get_data(self) -> list[Note]:
         return self.data
 
-    def get_current_note(self) -> Note:
+    def get_active_item(self) -> Note:
         return self.data[self.idx]
 
     def update_data(self, notes: List[Note]) -> None:

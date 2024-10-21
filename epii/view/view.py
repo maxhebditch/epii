@@ -16,10 +16,10 @@ class Header(QLabel):
         self.viewmodel.data_changed.connect(self._update_text)
 
     def _init_ui(self) -> None:
-        self.setText(self.viewmodel.get_data())
+        self.setText(self.viewmodel.get_current_note())
 
     def _update_text(self) -> None:
-        self.setText(self.viewmodel.get_data())
+        self.setText(self.viewmodel.get_current_note())
 
 
 class View(QMainWindow):

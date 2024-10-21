@@ -21,7 +21,7 @@ def view():
     else:
         app = QApplication.instance()
     viewmodel = Mock(spec=ViewModel)
-    viewmodel.get_data.return_value = "Note Content 0"
+    viewmodel.get_current_note.return_value = "Note Content 0"
     view = View(viewmodel)
     yield view
     app.quit()
@@ -44,7 +44,7 @@ def test_init_ui(view):
 def test_header_init_ui():
     viewmodel = Mock(spec=ViewModel)
     view_data_return = "Note Content 0"
-    viewmodel.get_data.return_value = view_data_return
+    viewmodel.get_current_note.return_value = view_data_return
     header = Header(viewmodel)
     assert header.text() == view_data_return
 
@@ -74,13 +74,13 @@ def test_header_update_text_on_emit():
 
     spy = QSignalSpy(viewmodel.data_changed)
 
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 0
 
-    with patch("epii.view_model.ViewModel.get_data") as mock_get_data:
+    with patch("epii.view_model.ViewModel.get_current_note") as mock_get_current_note:
         new_data = "New Note Content"
-        mock_get_data.return_value = new_data
+        mock_get_current_note.return_value = new_data
         viewmodel.data_changed.emit()
 
         assert header.text() == new_data
@@ -94,18 +94,18 @@ def test_header_update_text_on_button_press():
 
     spy = QSignalSpy(viewmodel.data_changed)
 
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 0
 
     QTest.mouseClick(update_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 1"
     assert spy.count() == 1
 
-    with patch("epii.view_model.ViewModel.get_data") as mock_get_data:
+    with patch("epii.view_model.ViewModel.get_current_note") as mock_get_current_note:
         new_data = "New Note Content"
-        mock_get_data.return_value = new_data
+        mock_get_current_note.return_value = new_data
         viewmodel.data_changed.emit()
 
         assert header.text() == new_data
@@ -120,32 +120,32 @@ def test_header_switch_note_on_button_press():
 
     spy = QSignalSpy(viewmodel.data_changed)
 
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 0
 
     QTest.mouseClick(right_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 0"
     assert spy.count() == 1
 
     QTest.mouseClick(left_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 2
 
     QTest.mouseClick(left_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 3
 
     QTest.mouseClick(right_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 0"
     assert spy.count() == 4
 
     QTest.mouseClick(right_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 0"
     assert spy.count() == 5
 
@@ -160,36 +160,36 @@ def test_header_update_notes_individually_on_button_press():
 
     spy = QSignalSpy(viewmodel.data_changed)
 
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 0"
     assert spy.count() == 0
 
     QTest.mouseClick(update_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 1"
     assert spy.count() == 1
 
     QTest.mouseClick(right_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 0"
     assert spy.count() == 2
 
     QTest.mouseClick(left_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 1"
     assert spy.count() == 3
 
     QTest.mouseClick(update_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_1_data['content']} 2"
     assert spy.count() == 4
 
     QTest.mouseClick(right_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 0"
     assert spy.count() == 5
 
     QTest.mouseClick(update_button, Qt.LeftButton)
-    assert header.text() == viewmodel.get_data()
+    assert header.text() == viewmodel.get_current_note()
     assert header.text() == f"{note_2_data['content']} 1"
     assert spy.count() == 6
