@@ -24,7 +24,7 @@ class LeftNoteButton(ChangeNoteButton):
         self.setText("Left")
 
     def _change_note(self) -> None:
-        self.viewmodel.change_idx(Direction.LEFT)
+        self.viewmodel.change_note_current(Direction.LEFT)
         self.viewmodel.update_view()
 
 
@@ -37,5 +37,5 @@ class RightNoteButton(ChangeNoteButton):
         self.setText("Right")
 
     def _change_note(self) -> None:
-        self.viewmodel.change_idx(Direction.RIGHT)
+        self.viewmodel.change_note_current(Direction.RIGHT)
         self.viewmodel.update_view()
