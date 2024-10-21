@@ -11,16 +11,16 @@ class ViewModel(QObject):
         super().__init__()
         self._model = model
 
-    def get_notes_all(self) -> str:
+    def get_current_note(self) -> str:
         note = self._model.get_active_item()
         return f"{note.content} {note.count}"
 
-    def update_note_current(self) -> None:
+    def update_current_note(self) -> None:
         self._model.update_data(self._model.data)
         self.data_changed.emit()
 
     def update_view(self) -> None:
         self.data_changed.emit()
 
-    def change_note_current(self, direction: Direction) -> None:
+    def change_current_note(self, direction: Direction) -> None:
         self._model.change_idx(direction.value)

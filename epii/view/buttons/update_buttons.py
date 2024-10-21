@@ -9,7 +9,7 @@ class UpdateButton(BaseButton):
 
     def _init_ui(self) -> None:
         self.setText("Increment")
-        self.clicked.connect(self._update_note_current)
+        self.clicked.connect(self._update_current_note)
 
-    def _update_note_current(self) -> None:
-        self.viewmodel.update_note_current()
+    def _update_current_note(self) -> None:
+        self.viewmodel.update_current_note()
