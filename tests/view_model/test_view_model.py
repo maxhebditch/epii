@@ -88,7 +88,9 @@ def test_concurrent_updates(view_model, num_jobs, num_threads):
             with update_lock:
                 view_model.update_current_note()
 
-    threads = [Thread(target=update_current_note_concurrently) for _ in range(num_threads)]
+    threads = [
+        Thread(target=update_current_note_concurrently) for _ in range(num_threads)
+    ]
     for thread in threads:
         thread.start()
     for thread in threads:
